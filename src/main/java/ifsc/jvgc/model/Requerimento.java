@@ -1,5 +1,8 @@
 package ifsc.jvgc.model;
 
+import ifsc.jvgc.state.EmAberto;
+import ifsc.jvgc.state.EstadoRequerimento;
+
 import java.time.LocalDate;
 
 public class Requerimento {
@@ -8,6 +11,7 @@ public class Requerimento {
     private final LocalDate dataRequerimento;
     private final String status;
     private final LocalDate dataValidacao;
+    private EstadoRequerimento estado;
 
     public Requerimento(int id, Aluno aluno, LocalDate dataRequerimento, String status, LocalDate dataValidacao) {
         this.id = id;
@@ -15,10 +19,19 @@ public class Requerimento {
         this.dataRequerimento = dataRequerimento;
         this.status = status;
         this.dataValidacao = dataValidacao;
+        this.estado = new EmAberto();
     }
 
     @Override
     public String toString() {
         return "Requerimento{id=" + id + ", aluno=" + aluno + ", status='" + status + "'}";
+    }
+
+    public void avaliar() {
+        estado.avaliar(this);
+    }
+
+    public void setEstado(EstadoRequerimento estado) {
+        this.estado = estado;
     }
 }
