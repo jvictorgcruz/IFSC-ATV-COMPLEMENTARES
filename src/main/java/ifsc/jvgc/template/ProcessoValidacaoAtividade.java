@@ -3,7 +3,7 @@ package ifsc.jvgc.template;
 import ifsc.jvgc.model.AtividadeRealizada;
 import ifsc.jvgc.strategy.EstrategiaValidacaoHoras;
 
-abstract class ProcessoValidacaoAtividade {
+public abstract class ProcessoValidacaoAtividade {
     public final void validar(AtividadeRealizada atividade, EstrategiaValidacaoHoras estrategia) {
         verificarDocumento(atividade);
         int horasValidadas = estrategia.calcularHorasValidas(atividade);
