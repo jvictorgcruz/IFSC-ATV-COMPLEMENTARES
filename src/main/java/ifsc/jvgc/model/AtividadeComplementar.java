@@ -22,4 +22,8 @@ public class AtividadeComplementar {
     public String toString() {
         return "AtividadeComplementar{id=" + id + ", descricao='" + descricao + "'}";
     }
+
+    public int getLimiteMaximo() {
+        return this.limiteMaximo;
+    }
 }

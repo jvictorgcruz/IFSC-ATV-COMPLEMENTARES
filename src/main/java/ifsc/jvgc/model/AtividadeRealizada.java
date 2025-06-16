@@ -20,4 +20,20 @@ public class AtividadeRealizada {
     public String toString() {
         return "AtividadeRealizada{id=" + id + ", horasApresentadas=" + horasApresentadas + "}";
     }
+
+    public int getHorasApresentadas(){
+        return this.horasApresentadas;
+    }
+
+    public AtividadeComplementar getAtividade(){
+        return this.atividade;
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public String getDocumento(){
+        return this.documento;
+    }
 }
