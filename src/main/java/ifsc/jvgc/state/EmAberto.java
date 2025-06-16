@@ -7,4 +7,9 @@ public class EmAberto implements EstadoRequerimento{
         System.out.println("Requerimento criado");
         requerimento.setEstado(new EmAvaliacao());  // Exemplo de transição
     }
+
+    @Override
+    public String nome() {
+        return "Em aberto";
+    }
 }

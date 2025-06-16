@@ -7,4 +7,9 @@ public class EmAvaliacao implements EstadoRequerimento {
         System.out.println("Requerimento em avaliação...");
         requerimento.setEstado(new Deferido());  // Exemplo de transição
     }
+
+    @Override
+    public String nome() {
+        return "Em avaliação";
+    }
 }
