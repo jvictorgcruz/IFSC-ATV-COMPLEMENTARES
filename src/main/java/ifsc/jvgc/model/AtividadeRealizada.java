@@ -21,19 +21,19 @@ public class AtividadeRealizada {
         return "AtividadeRealizada{id=" + id + ", horasApresentadas=" + horasApresentadas + "}";
     }
 
-    public int getHorasApresentadas(){
+    public int horasApresentadas(){
         return this.horasApresentadas;
     }
 
-    public AtividadeComplementar getAtividade(){
+    public AtividadeComplementar atividade(){
         return this.atividade;
     }
 
-    public int getId(){
+    public int id(){
         return this.id;
     }
 
-    public String getDocumento(){
+    public String documento(){
         return this.documento;
     }
 }
