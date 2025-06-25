@@ -1,14 +1,15 @@
 package ifsc.jvgc.template;
 
 import ifsc.jvgc.model.AtividadeRealizada;
+import ifsc.jvgc.model.ValidacaoAtividade;
 import ifsc.jvgc.strategy.EstrategiaValidacaoHoras;
 
 public abstract class ProcessoValidacaoAtividade {
-    public final void validar(AtividadeRealizada atividade, EstrategiaValidacaoHoras estrategia) {
+    public final ValidacaoAtividade validar(AtividadeRealizada atividade, EstrategiaValidacaoHoras estrategia) {
         verificarDocumento(atividade);
         int horasValidadas = estrategia.calcularHorasValidas(atividade);
         registrarValidacao(atividade, horasValidadas);
-        emitirParecer(atividade, horasValidadas);
+        return new ValidacaoAtividade(atividade, horasValidadas);
     }
 
     protected abstract void verificarDocumento(AtividadeRealizada atividade);
@@ -28,5 +29,4 @@ public abstract class ProcessoValidacaoAtividade {
         return "";
     }
 
-    protected abstract void emitirParecer(AtividadeRealizada atividade, int horasValidadas);
 }

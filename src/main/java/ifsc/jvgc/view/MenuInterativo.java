@@ -11,7 +11,7 @@ import java.util.*;
 public class MenuInterativo {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<AtividadeRealizada> atividadesRealizadas = new ArrayList<>();
+    private static final List<ValidacaoAtividade> validacoes = new ArrayList<>();
     private static final Aluno aluno = new Aluno(146846, "Ana");
     private static final Requerimento requerimento = new Requerimento(aluno, LocalDate.now(), null);
 
@@ -37,8 +37,8 @@ public class MenuInterativo {
             exibirSubmenuAtividades(modalidadeSelecionada);
         }
 
-        if (atividadesRealizadas.isEmpty()) {
-            System.out.println("Nenhuma atividade informada. Finalizando...\n");
+        if (validacoes.isEmpty()) {
+            System.out.println("Nenhuma atividade foi validada. Finalizando...\n");
             return;
         }
         gerarParecer();
@@ -75,36 +75,39 @@ public class MenuInterativo {
             );
 
             ProcessoValidacaoAtividade processo = new ProcessoValidacaoPadrao();
-            processo.validar(realizada, new ValidacaoComLimiteMaximo());
+            ValidacaoAtividade validacao = processo.validar(realizada, new ValidacaoComLimiteMaximo());
+            validacoes.add(validacao);
 
-            atividadesRealizadas.add(realizada);
-            System.out.println("Atividade registrada com sucesso.");
+            System.out.println("Atividade validada com sucesso.");
         }
     }
 
     private static void gerarParecer() {
         requerimento.validar();
+        Parecer parecer = new Parecer(requerimento, "", LocalDate.now());
 
         System.out.println("\n=== PARECER DE VALIDAÇÃO ===");
         System.out.println("Matrícula: " + aluno.matricula());
-        System.out.println("Data emissão: " + LocalDate.now());
+        System.out.println("Data emissão: " + parecer.dataParecer());
 
         int totalDeclaradas = 0;
         int totalValidadas = 0;
 
         int count = 1;
-        for (AtividadeRealizada ar : atividadesRealizadas) {
-            int declaradas = ar.horasApresentadas();
-            int validadas = ar.horasValidadas();
-            String desc = ar.atividade().descricao();
-            int limite = ar.atividade().limiteMaximo();
+        for (ValidacaoAtividade val : validacoes) {
+            val.definirParecer(parecer);
+            int declaradas = val.atividadeRealizada().horasApresentadas();
+            int validadas = val.atividadeRealizada().horasValidadas();
+            String desc = val.atividadeRealizada().atividade().descricao();
+            int limite = val.atividadeRealizada().atividade().limiteMaximo();
+            String obs = val.atividadeRealizada().observacao();
 
             System.out.println("\nAtividade " + count++ + ":");
             System.out.println("  Descrição:       " + desc);
             System.out.println("  Horas declaradas: " + declaradas + "h");
             System.out.println("  Limite Máximo:    " + limite + "h");
             System.out.println("  Horas validadas:  " + validadas + "h");
-            System.out.println("  Observação:      " + ar.observacao());
+            System.out.println("  Observação:      " + obs);
 
             totalDeclaradas += declaradas;
             totalValidadas += validadas;

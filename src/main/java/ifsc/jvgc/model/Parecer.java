@@ -14,4 +14,8 @@ public class Parecer {
         this.dataParecer = dataParecer;
     }
 
+    public LocalDate dataParecer() {
+        return dataParecer;
+    }
+
 }

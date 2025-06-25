@@ -7,7 +7,4 @@ public class ProcessoValidacaoPadrao extends ProcessoValidacaoAtividade {
         System.out.println("Verificando documento: " + atividade.documento());
     }
 
-    protected void emitirParecer(AtividadeRealizada atividade, int horasValidadas) {
-        System.out.println("Emitindo parecer de validação para atividade: " + atividade.id());
-    }
 }
