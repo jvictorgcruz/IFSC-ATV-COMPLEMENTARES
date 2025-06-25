@@ -1,16 +1,20 @@
 package ifsc.jvgc.model;
 
 public class Aluno {
-    private final int id;
+    private final int matricula;
     private final String nome;
 
-    public Aluno(int id, String nome) {
-        this.id = id;
+    public Aluno(int matricula, String nome) {
+        this.matricula = matricula;
         this.nome = nome;
     }
 
     @Override
     public String toString() {
-        return "Aluno{id=" + id + ", nome='" + nome + "'}";
+        return "Aluno{matricula=" + matricula + ", nome='" + nome + "'}";
+    }
+
+    public int matricula() {
+        return matricula;
     }
 }
