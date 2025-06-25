@@ -8,17 +8,17 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Extensao extends Modalidade {
-    public Extensao(int id) {
-        super(id, "Extensão");
+    public Extensao() {
+        super("Extensão");
     }
 
     @Override
     public Map<Integer, AtividadeComplementar> atividades() {
         Map<Integer, AtividadeComplementar> map = new LinkedHashMap<>();
-        DocumentacaoComprobatoria doc = new DocumentacaoComprobatoria(1, "Certificado");
-        HorasPorAtividade horas = new HorasPorAtividade(1, "Conforme documento");
+        DocumentacaoComprobatoria doc = new DocumentacaoComprobatoria( "Certificado");
+        HorasPorAtividade horas = new HorasPorAtividade("Conforme documento");
 
-        map.put(1, new AtividadeComplementar(5, "Curso de Extensão", doc, horas, 40, this));
+        map.put(1, new AtividadeComplementar("Curso de Extensão", doc, horas, 40, this));
         return map;
     }
 }

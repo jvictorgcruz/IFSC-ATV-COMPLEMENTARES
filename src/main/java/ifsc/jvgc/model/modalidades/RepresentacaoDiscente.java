@@ -8,16 +8,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RepresentacaoDiscente extends Modalidade {
-    public RepresentacaoDiscente(int id) {
-        super(id, "Representação Discente");
+    public RepresentacaoDiscente() {
+        super("Representação Discente");
     }
     @Override
     public Map<Integer, AtividadeComplementar> atividades() {
         Map<Integer, AtividadeComplementar> map = new LinkedHashMap<>();
-        DocumentacaoComprobatoria doc = new DocumentacaoComprobatoria(1, "Certificado");
-        HorasPorAtividade horas = new HorasPorAtividade(1, "Conforme documento");
+        DocumentacaoComprobatoria doc = new DocumentacaoComprobatoria("Certificado");
+        HorasPorAtividade horas = new HorasPorAtividade("Conforme documento");
 
-        map.put(1, new AtividadeComplementar(6, "Representante de Turma", doc, horas, 30, this));
+        map.put(1, new AtividadeComplementar("Representante de Turma", doc, horas, 30, this));
         return map;
     }
 }

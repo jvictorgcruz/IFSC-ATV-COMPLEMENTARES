@@ -12,8 +12,8 @@ public class MenuInterativo {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<AtividadeRealizada> atividadesRealizadas = new ArrayList<>();
-    private static final Aluno aluno = new Aluno(1, "Ana");
-    private static final Requerimento requerimento = new Requerimento(1, aluno, LocalDate.now(), null);
+    private static final Aluno aluno = new Aluno(146846, "Ana");
+    private static final Requerimento requerimento = new Requerimento(aluno, LocalDate.now(), null);
 
     public static void exibirMenu() {
         Map<Integer, Modalidade> modalidades = carregarModalidades();
@@ -68,7 +68,6 @@ public class MenuInterativo {
             scanner.nextLine(); // limpar buffer
 
             AtividadeRealizada realizada = new AtividadeRealizada(
-                    atividadesRealizadas.size() + 1,
                     requerimento,
                     atividade,
                     horasDeclaradas,
@@ -127,11 +126,10 @@ public class MenuInterativo {
 
     private static Map<Integer, Modalidade> carregarModalidades() {
         Map<Integer, Modalidade> map = new LinkedHashMap<>();
-        int index = 1;
-        map.put(index, new Ensino(index++));
-        map.put(index, new Pesquisa(index++));
-        map.put(index, new Extensao(index++));
-        map.put(index, new RepresentacaoDiscente(index));
+        map.put(1, new Ensino());
+        map.put(2, new Pesquisa());
+        map.put(3, new Extensao());
+        map.put(4, new RepresentacaoDiscente());
         return map;
     }
 
