@@ -36,6 +36,10 @@ public class MenuInterativo {
             exibirSubmenuAtividades(modalidadeSelecionada);
         }
 
+        if (atividadesRealizadas.isEmpty()) {
+            System.out.println("Nenhuma atividade informada. Finalizando...\n");
+            return;
+        }
         gerarParecer();
     }
 
