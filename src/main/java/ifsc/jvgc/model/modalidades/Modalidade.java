@@ -1,6 +1,9 @@
-package ifsc.jvgc.model;
+package ifsc.jvgc.model.modalidades;
 
-public class Modalidade {
+import ifsc.jvgc.model.AtividadeComplementar;
+import java.util.Map;
+
+public abstract class Modalidade {
     private final int id;
     private final String nome;
 
@@ -14,7 +17,9 @@ public class Modalidade {
         return "Modalidade{id=" + id + ", nome='" + nome + "'}";
     }
 
-    public String getNome() {
+    public String nome() {
         return nome;
     }
+
+    public abstract Map<Integer, AtividadeComplementar> atividades();
 }

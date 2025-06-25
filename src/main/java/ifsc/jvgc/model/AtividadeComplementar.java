@@ -1,5 +1,7 @@
 package ifsc.jvgc.model;
 
+import ifsc.jvgc.model.modalidades.Modalidade;
+
 public class AtividadeComplementar {
     private final int id;
     private final String descricao;

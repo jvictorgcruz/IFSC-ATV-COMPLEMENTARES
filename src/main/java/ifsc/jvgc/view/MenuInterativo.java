@@ -1,6 +1,7 @@
 package ifsc.jvgc.view;
 
 import ifsc.jvgc.model.*;
+import ifsc.jvgc.model.modalidades.*;
 import ifsc.jvgc.strategy.*;
 import ifsc.jvgc.template.*;
 
@@ -20,7 +21,7 @@ public class MenuInterativo {
         while (true) {
             System.out.println("\n--- MENU DE MODALIDADES ---");
             for (Map.Entry<Integer, Modalidade> entry : modalidades.entrySet()) {
-                System.out.printf("%d - %s\n", entry.getKey(), entry.getValue().getNome());
+                System.out.printf("%d - %s\n", entry.getKey(), entry.getValue().nome());
             }
             System.out.println("0 - Finalizar e gerar parecer");
 
@@ -47,7 +48,7 @@ public class MenuInterativo {
         Map<Integer, AtividadeComplementar> atividades = carregarAtividadesPorModalidade(modalidade);
 
         while (true) {
-            System.out.printf("\n--- ATIVIDADES DA MODALIDADE: %s ---\n", modalidade.getNome());
+            System.out.printf("\n--- ATIVIDADES DA MODALIDADE: %s ---\n", modalidade.nome());
             for (Map.Entry<Integer, AtividadeComplementar> entry : atividades.entrySet()) {
                 System.out.printf("%d - %s\n", entry.getKey(), entry.getValue().descricao());
             }
@@ -126,32 +127,15 @@ public class MenuInterativo {
 
     private static Map<Integer, Modalidade> carregarModalidades() {
         Map<Integer, Modalidade> map = new LinkedHashMap<>();
-        map.put(1, new Modalidade(1, "Ensino"));
-        map.put(2, new Modalidade(2, "Pesquisa"));
-        map.put(3, new Modalidade(3, "Extensão"));
-        map.put(4, new Modalidade(4, "Representação Discente"));
+        int index = 1;
+        map.put(index, new Ensino(index++));
+        map.put(index, new Pesquisa(index++));
+        map.put(index, new Extensao(index++));
+        map.put(index, new RepresentacaoDiscente(index));
         return map;
     }
 
     private static Map<Integer, AtividadeComplementar> carregarAtividadesPorModalidade(Modalidade modalidade) {
-        Map<Integer, AtividadeComplementar> map = new LinkedHashMap<>();
-
-        DocumentacaoComprobatoria doc = new DocumentacaoComprobatoria(1, "Certificado");
-        HorasPorAtividade horas = new HorasPorAtividade(1, "Conforme documento");
-
-        // Exemplo de atividades genéricas por modalidade
-        if (modalidade.getNome().equals("Ensino")) {
-            map.put(1, new AtividadeComplementar(1, "Monitoria", doc, horas, 60, modalidade));
-            map.put(2, new AtividadeComplementar(2, "Curso de Línguas", doc, horas, 40, modalidade));
-        } else if (modalidade.getNome().equals("Pesquisa")) {
-            map.put(1, new AtividadeComplementar(3, "Iniciação Científica", doc, horas, 100, modalidade));
-            map.put(2, new AtividadeComplementar(4, "Publicação de Artigo", doc, horas, 80, modalidade));
-        } else if (modalidade.getNome().equals("Extensão")) {
-            map.put(1, new AtividadeComplementar(5, "Curso de Extensão", doc, horas, 40, modalidade));
-        } else if (modalidade.getNome().equals("Representação Discente")) {
-            map.put(1, new AtividadeComplementar(6, "Representante de Turma", doc, horas, 30, modalidade));
-        }
-
-        return map;
+        return modalidade.atividades();
     }
 }
