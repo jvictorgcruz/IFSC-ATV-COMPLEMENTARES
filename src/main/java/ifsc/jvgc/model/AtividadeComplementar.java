@@ -26,4 +26,16 @@ public class AtividadeComplementar {
     public int getLimiteMaximo() {
         return this.limiteMaximo;
     }
+
+    public String descricao() {
+        return this.descricao;
+    }
+
+    public Modalidade modalidade() {
+        return this.modalidade;
+    }
+
+    public int limiteMaximo() {
+        return this.limiteMaximo;
+    }
 }

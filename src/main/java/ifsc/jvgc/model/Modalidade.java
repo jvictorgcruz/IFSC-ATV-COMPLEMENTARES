@@ -13,4 +13,8 @@ public class Modalidade {
     public String toString() {
         return "Modalidade{id=" + id + ", nome='" + nome + "'}";
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
