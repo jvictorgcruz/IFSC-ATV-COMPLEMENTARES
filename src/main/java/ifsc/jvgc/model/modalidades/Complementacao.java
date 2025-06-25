@@ -7,8 +7,8 @@ import ifsc.jvgc.model.HorasPorAtividade;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class RepresentacaoDiscente extends Modalidade {
-    public RepresentacaoDiscente() {
+public class Complementacao extends Modalidade {
+    public Complementacao() {
         super("Representação Discente");
     }
     @Override

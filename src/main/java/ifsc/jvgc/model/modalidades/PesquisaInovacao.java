@@ -7,8 +7,8 @@ import ifsc.jvgc.model.HorasPorAtividade;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Pesquisa extends Modalidade {
-    public Pesquisa() {
+public class PesquisaInovacao extends Modalidade {
+    public PesquisaInovacao() {
         super("Pesquisa");
     }
     @Override

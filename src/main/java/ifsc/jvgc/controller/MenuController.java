@@ -18,9 +18,9 @@ public class MenuController {
 
     public MenuController() {
         modalidades.put(1, new Ensino());
-        modalidades.put(2, new Pesquisa());
+        modalidades.put(2, new PesquisaInovacao());
         modalidades.put(3, new Extensao());
-        modalidades.put(4, new RepresentacaoDiscente());
+        modalidades.put(4, new Complementacao());
     }
 
     public Map<Integer, Modalidade> getModalidades() {
