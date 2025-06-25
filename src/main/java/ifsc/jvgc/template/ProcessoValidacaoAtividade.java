@@ -14,7 +14,18 @@ public abstract class ProcessoValidacaoAtividade {
     protected abstract void verificarDocumento(AtividadeRealizada atividade);
 
     protected void registrarValidacao(AtividadeRealizada atividade, int horasValidadas) {
-        System.out.println("Horas validadas: " + horasValidadas);
+        atividade.definirHorasValidadas(horasValidadas);
+        atividade.definirObservacao(gerarObservacao(atividade));
+    }
+
+    protected String gerarObservacao(AtividadeRealizada atividade){
+        int horasApresentadas = atividade.horasApresentadas();
+        int horasValidadas = atividade.horasValidadas();
+        if (horasValidadas < horasApresentadas){
+            return String.format("Horas declaradas (%dh) excedem o limite (%dh); ajustadas para %dh.",
+                    horasApresentadas, horasValidadas, horasValidadas);
+        }
+        return "";
     }
 
     protected abstract void emitirParecer(AtividadeRealizada atividade, int horasValidadas);
