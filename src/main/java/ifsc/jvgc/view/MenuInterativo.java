@@ -83,6 +83,8 @@ public class MenuInterativo {
     }
 
     private static void gerarParecer() {
+        requerimento.validar();
+
         System.out.println("\n=== PARECER DE VALIDAÇÃO ===");
         System.out.println("Matrícula: " + aluno.matricula());
         System.out.println("Data emissão: " + LocalDate.now());

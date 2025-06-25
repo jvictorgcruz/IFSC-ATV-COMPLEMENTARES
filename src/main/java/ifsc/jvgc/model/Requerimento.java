@@ -9,7 +9,7 @@ public class Requerimento {
     private final int id;
     private final Aluno aluno;
     private final LocalDate dataRequerimento;
-    private final LocalDate dataValidacao;
+    private LocalDate dataValidacao;
     private EstadoRequerimento estado;
 
     public Requerimento(int id, Aluno aluno, LocalDate dataRequerimento, LocalDate dataValidacao) {
@@ -31,5 +31,9 @@ public class Requerimento {
 
     public void setEstado(EstadoRequerimento estado) {
         this.estado = estado;
+    }
+
+    public void validar() {
+        this.dataValidacao = LocalDate.now();
     }
 }
