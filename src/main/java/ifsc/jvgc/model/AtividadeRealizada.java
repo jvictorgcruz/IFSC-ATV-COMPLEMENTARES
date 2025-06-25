@@ -6,6 +6,8 @@ public class AtividadeRealizada {
     private final AtividadeComplementar atividade;
     private final int horasApresentadas;
     private final String documento;
+    private int horasValidadas = 0;
+    private String observacao = "";
 
     public AtividadeRealizada(int id, Requerimento requerimento, AtividadeComplementar atividade,
                               int horasApresentadas, String documento) {
@@ -35,5 +37,21 @@ public class AtividadeRealizada {
 
     public String documento(){
         return this.documento;
+    }
+
+    public void definirHorasValidadas(int horasValidadas) {
+        this.horasValidadas = horasValidadas;
+    }
+
+    public int horasValidadas(){
+        return horasValidadas;
+    }
+
+    public void definirObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public String observacao(){
+        return this.observacao;
     }
 }
