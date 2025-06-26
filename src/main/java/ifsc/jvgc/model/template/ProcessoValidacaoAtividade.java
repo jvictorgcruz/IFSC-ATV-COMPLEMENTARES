@@ -1,8 +1,8 @@
-package ifsc.jvgc.template;
+package ifsc.jvgc.model.template;
 
-import ifsc.jvgc.model.AtividadeRealizada;
-import ifsc.jvgc.model.ValidacaoAtividade;
-import ifsc.jvgc.strategy.EstrategiaValidacaoHoras;
+import ifsc.jvgc.model.entities.AtividadeRealizada;
+import ifsc.jvgc.model.entities.ValidacaoAtividade;
+import ifsc.jvgc.model.strategy.EstrategiaValidacaoHoras;
 
 public abstract class ProcessoValidacaoAtividade {
     public final ValidacaoAtividade validar(AtividadeRealizada atividade, EstrategiaValidacaoHoras estrategia) {

@@ -16,7 +16,7 @@ public class Requerimento {
         this.aluno = aluno;
         this.dataRequerimento = dataRequerimento;
         this.dataValidacao = dataValidacao;
-        this.estado = new EmAberto();
+        this.estado = new EmAberto(); // TODO: VER PARA ALTERAR ESTADOS DE REQUERIMENTO
     }
 
     public void avaliar() {
