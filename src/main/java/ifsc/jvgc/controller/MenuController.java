@@ -49,9 +49,9 @@ public class MenuController {
 
     public String gerarParecer() {
         if (validacoes.isEmpty()) return "Nenhuma atividade validada.";
-
-        requerimento.validar();
+        requerimento.avaliar();
         Parecer parecer = new Parecer(requerimento, "", LocalDate.now());
+        requerimento.avaliar();
 
         int totalDeclaradas = 0;
         int totalValidadas = 0;

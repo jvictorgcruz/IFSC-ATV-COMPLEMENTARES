@@ -4,8 +4,9 @@ import ifsc.jvgc.model.entities.Requerimento;
 
 public class EmAvaliacao implements EstadoRequerimento {
     public void avaliar(Requerimento requerimento) {
-        System.out.println("Requerimento em avaliação...");
-        requerimento.setEstado(new Deferido());  // Exemplo de transição
+        System.out.println("Requerimento deferido");
+        requerimento.setEstado(new Deferido());
+        requerimento.validar();
     }
 
     @Override
