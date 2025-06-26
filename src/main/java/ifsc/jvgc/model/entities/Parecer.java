@@ -1,4 +1,4 @@
-package ifsc.jvgc.model;
+package ifsc.jvgc.model.entities;
 
 import java.time.LocalDate;
 

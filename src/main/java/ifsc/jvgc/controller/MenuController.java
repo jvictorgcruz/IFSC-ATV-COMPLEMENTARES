@@ -1,9 +1,9 @@
 package ifsc.jvgc.controller;
 
-import ifsc.jvgc.model.*;
-import ifsc.jvgc.model.modalidades.*;
-import ifsc.jvgc.strategy.*;
-import ifsc.jvgc.template.*;
+import ifsc.jvgc.model.entities.*;
+import ifsc.jvgc.model.entities.modalidades.*;
+import ifsc.jvgc.model.strategy.*;
+import ifsc.jvgc.model.template.*;
 
 import java.time.LocalDate;
 import java.util.*;

@@ -1,6 +1,6 @@
-package ifsc.jvgc.model;
+package ifsc.jvgc.model.entities;
 
-import ifsc.jvgc.model.modalidades.Modalidade;
+import ifsc.jvgc.model.entities.modalidades.Modalidade;
 
 public class AtividadeComplementar {
     private int id;

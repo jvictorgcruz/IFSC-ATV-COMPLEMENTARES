@@ -1,6 +1,6 @@
-package ifsc.jvgc.state;
+package ifsc.jvgc.model.state;
 
-import ifsc.jvgc.model.Requerimento;
+import ifsc.jvgc.model.entities.Requerimento;
 
 public class EmAberto implements EstadoRequerimento{
     public void avaliar(Requerimento requerimento) {

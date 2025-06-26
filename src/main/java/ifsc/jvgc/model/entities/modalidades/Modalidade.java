@@ -1,6 +1,6 @@
-package ifsc.jvgc.model.modalidades;
+package ifsc.jvgc.model.entities.modalidades;
 
-import ifsc.jvgc.model.AtividadeComplementar;
+import ifsc.jvgc.model.entities.AtividadeComplementar;
 import java.util.Map;
 
 public abstract class Modalidade {

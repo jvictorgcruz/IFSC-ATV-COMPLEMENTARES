@@ -1,6 +1,6 @@
-package ifsc.jvgc.strategy;
+package ifsc.jvgc.model.strategy;
 
-import ifsc.jvgc.model.AtividadeRealizada;
+import ifsc.jvgc.model.entities.AtividadeRealizada;
 
 public class ValidacaoComLimiteMaximo implements EstrategiaValidacaoHoras {
     public int calcularHorasValidas(AtividadeRealizada atividade) {

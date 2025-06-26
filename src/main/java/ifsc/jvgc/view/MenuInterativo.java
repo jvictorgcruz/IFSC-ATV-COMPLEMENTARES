@@ -1,8 +1,8 @@
 package ifsc.jvgc.view;
 
 import ifsc.jvgc.controller.MenuController;
-import ifsc.jvgc.model.AtividadeComplementar;
-import ifsc.jvgc.model.modalidades.Modalidade;
+import ifsc.jvgc.model.entities.AtividadeComplementar;
+import ifsc.jvgc.model.entities.modalidades.Modalidade;
 
 import java.util.Map;
 import java.util.Scanner;

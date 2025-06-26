@@ -1,4 +1,4 @@
-package ifsc.jvgc.model;
+package ifsc.jvgc.model.entities;
 
 public class ValidacaoAtividade {
     private int id;

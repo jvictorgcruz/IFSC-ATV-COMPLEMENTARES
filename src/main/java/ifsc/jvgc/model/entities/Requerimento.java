@@ -1,7 +1,7 @@
-package ifsc.jvgc.model;
+package ifsc.jvgc.model.entities;
 
-import ifsc.jvgc.state.EmAberto;
-import ifsc.jvgc.state.EstadoRequerimento;
+import ifsc.jvgc.model.state.EmAberto;
+import ifsc.jvgc.model.state.EstadoRequerimento;
 
 import java.time.LocalDate;
 
@@ -16,7 +16,7 @@ public class Requerimento {
         this.aluno = aluno;
         this.dataRequerimento = dataRequerimento;
         this.dataValidacao = dataValidacao;
-        this.estado = new EmAberto(); // TODO: VER PARA ALTERAR ESTADOS DE REQUERIMENTO
+        this.estado = new EmAberto();
     }
 
     public void avaliar() {

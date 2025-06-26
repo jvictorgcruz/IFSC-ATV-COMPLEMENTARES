@@ -1,8 +1,8 @@
-package ifsc.jvgc.model.modalidades;
+package ifsc.jvgc.model.entities.modalidades;
 
-import ifsc.jvgc.model.AtividadeComplementar;
-import ifsc.jvgc.model.DocumentacaoComprobatoria;
-import ifsc.jvgc.model.HorasPorAtividade;
+import ifsc.jvgc.model.entities.AtividadeComplementar;
+import ifsc.jvgc.model.entities.DocumentacaoComprobatoria;
+import ifsc.jvgc.model.entities.HorasPorAtividade;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
