@@ -47,10 +47,13 @@ public class MenuController {
         return "Atividade validada com sucesso.";
     }
 
-    public String gerarParecer() {
-        if (validacoes.isEmpty()) return "Nenhuma atividade validada.";
+    public boolean temValidacoes(){
+        return !validacoes.isEmpty();
+    }
+
+    public String gerarParecer(String textoParecer) {
         requerimento.avaliar();
-        Parecer parecer = new Parecer(requerimento, "", LocalDate.now());
+        Parecer parecer = new Parecer(requerimento, textoParecer, LocalDate.now());
         requerimento.avaliar();
 
         int totalDeclaradas = 0;

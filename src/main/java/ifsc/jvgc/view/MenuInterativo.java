@@ -53,7 +53,21 @@ public class MenuInterativo {
     }
 
     public static void emitirRelatorioParecer(){
-        String relatorioParecer = controller.gerarParecer();
+        if (!controller.temValidacoes()) {
+            System.out.println("Nenhuma atividade validada.");
+            return;
+        }
+
+        String textoParecer;
+        while (true) {
+            System.out.print("Digite o texto do parecer final: ");
+            textoParecer = scanner.nextLine().trim();
+
+            if (!textoParecer.isEmpty()) break;
+            System.out.println("O texto do parecer não pode estar vazio. Tente novamente.");
+        }
+
+        String relatorioParecer = controller.gerarParecer(textoParecer);
         System.out.println(relatorioParecer);
     }
 
