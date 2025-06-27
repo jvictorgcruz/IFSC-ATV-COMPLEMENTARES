@@ -14,10 +14,13 @@ public class Complementacao extends Modalidade {
     @Override
     public Map<Integer, AtividadeComplementar> atividades() {
         Map<Integer, AtividadeComplementar> map = new LinkedHashMap<>();
-        DocumentacaoComprobatoria doc = new DocumentacaoComprobatoria("Certificado");
-        HorasPorAtividade horas = new HorasPorAtividade("Conforme documento");
 
-        map.put(1, new AtividadeComplementar("Representante de Turma", doc, horas, 30, this));
+        map.put(1, new AtividadeComplementar("Palestra técnica",
+                new DocumentacaoComprobatoria("Declaração de participação"),
+                new HorasPorAtividade("4 horas por atividade"), 20, this));
+        map.put(2, new AtividadeComplementar("Curso de lingua estrangeira",
+                new DocumentacaoComprobatoria("Certificado de participação"),
+                new HorasPorAtividade("Conforme documento comprobatório"), 80, this));
         return map;
     }
 }

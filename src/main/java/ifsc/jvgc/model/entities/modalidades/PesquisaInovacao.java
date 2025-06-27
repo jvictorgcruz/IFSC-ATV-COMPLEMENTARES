@@ -14,11 +14,12 @@ public class PesquisaInovacao extends Modalidade {
     @Override
     public Map<Integer, AtividadeComplementar> atividades() {
         Map<Integer, AtividadeComplementar> map = new LinkedHashMap<>();
-        DocumentacaoComprobatoria doc = new DocumentacaoComprobatoria("Certificado");
-        HorasPorAtividade horas = new HorasPorAtividade("Conforme documento");
-
-        map.put(1, new AtividadeComplementar("Iniciação Científica", doc, horas, 100, this));
-        map.put(2, new AtividadeComplementar("Publicação de Artigo", doc, horas, 80, this));
+        map.put(1, new AtividadeComplementar("Participação em programa de iniciação cientifica",
+                new DocumentacaoComprobatoria("Declaração de participação"),
+                new HorasPorAtividade("Conforme documento comprobatório"), 60, this));
+        map.put(2, new AtividadeComplementar("Autoria de artigo publicado",
+                new DocumentacaoComprobatoria("Capa do artigo"),
+                new HorasPorAtividade("10 horas por item"), 30, this));
         return map;
     }
 }
