@@ -2,7 +2,6 @@ package ifsc.jvgc.controller;
 
 import ifsc.jvgc.model.entities.*;
 import ifsc.jvgc.model.entities.modalidades.*;
-import ifsc.jvgc.model.strategy.*;
 import ifsc.jvgc.model.template.*;
 
 import java.time.LocalDate;
@@ -41,7 +40,7 @@ public class MenuController {
 
         AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horas, "certificado.pdf");
         ProcessoValidacaoAtividade processo = new ProcessoValidacaoPadrao();
-        ValidacaoAtividade validacao = processo.validar(realizada, new ValidacaoComLimiteMaximo());
+        ValidacaoAtividade validacao = processo.validar(realizada);
         validacoes.add(validacao);
 
         return "Atividade validada com sucesso.";
@@ -67,6 +66,7 @@ public class MenuController {
         for (ValidacaoAtividade val : validacoes) {
             val.definirParecer(parecer);
             int declaradas = val.atividadeRealizada().horasApresentadas();
+            String porAtividade = val.atividadeRealizada().atividade().horasPorAtividade().descricao();
             int validadas = val.atividadeRealizada().horasValidadas();
             String desc = val.atividadeRealizada().atividade().descricao();
             int limite = val.atividadeRealizada().atividade().limiteMaximo();
@@ -75,6 +75,7 @@ public class MenuController {
             sb.append("\nAtividade ").append(count++).append(":\n");
             sb.append("  Descrição:       ").append(desc).append("\n");
             sb.append("  Horas declaradas: ").append(declaradas).append("h\n");
+            sb.append("  Horas por atividade: ").append(porAtividade).append("\n");
             sb.append("  Limite Máximo:    ").append(limite).append("h\n");
             sb.append("  Horas validadas:  ").append(validadas).append("h\n");
             sb.append("  Observação:      ").append(obs).append("\n");

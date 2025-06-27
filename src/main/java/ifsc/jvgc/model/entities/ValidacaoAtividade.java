@@ -11,12 +11,6 @@ public class ValidacaoAtividade {
         this.horasValidadas = horasValidadas;
     }
 
-    public ValidacaoAtividade(AtividadeRealizada atividadeRealizada, int horasValidadas, Parecer parecer) {
-        this.atividadeRealizada = atividadeRealizada;
-        this.horasValidadas = horasValidadas;
-        this.parecer = parecer;
-    }
-
     public void definirParecer(Parecer parecer) {
         this.parecer = parecer;
     }

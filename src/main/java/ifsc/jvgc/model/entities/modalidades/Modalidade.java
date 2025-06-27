@@ -1,9 +1,10 @@
 package ifsc.jvgc.model.entities.modalidades;
 
 import ifsc.jvgc.model.entities.AtividadeComplementar;
+
 import java.util.Map;
 
-public abstract class Modalidade {
+public abstract class Modalidade implements AtividadesModalidade {
     private int id;
     private final String nome;
 

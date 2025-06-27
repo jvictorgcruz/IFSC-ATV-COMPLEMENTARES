@@ -2,8 +2,10 @@ package ifsc.jvgc.model.strategy;
 
 import ifsc.jvgc.model.entities.AtividadeRealizada;
 
-public class ValidacaoFixaPorTipo implements EstrategiaValidacaoHoras  {
+public class Validacao25hPorMes implements EstrategiaValidacao {
+    @Override
     public int calcularHorasValidas(AtividadeRealizada atividade) {
-        return 10;
+        return new ValidacaoComLimiteMaximo().calcularHorasValidas(atividade);
     }
 }
+

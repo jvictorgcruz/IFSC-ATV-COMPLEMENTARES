@@ -8,4 +8,8 @@ public class HorasPorAtividade {
         this.descricao = descricao;
     }
 
+    public String descricao() {
+        return descricao;
+    }
+
 }
