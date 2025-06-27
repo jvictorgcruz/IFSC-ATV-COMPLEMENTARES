@@ -7,20 +7,21 @@ public abstract class ProcessoValidacaoAtividade {
     public final ValidacaoAtividade validar(AtividadeRealizada realizada) {
         verificarDocumento(realizada);
         int horasValidas = realizada.atividade().estrategia().calcularHorasValidas(realizada);
-        registrarValidacao(realizada, horasValidas);
-        return new ValidacaoAtividade(realizada, horasValidas);
+        ValidacaoAtividade validacao = new ValidacaoAtividade(realizada);
+        registrarValidacao(validacao, horasValidas);
+        return validacao;
     }
 
     protected abstract void verificarDocumento(AtividadeRealizada atividade);
 
-    protected void registrarValidacao(AtividadeRealizada atividade, int horasValidas) {
-        atividade.definirHorasValidadas(horasValidas);
-        atividade.definirObservacao(gerarObservacao(atividade));
+    protected void registrarValidacao(ValidacaoAtividade validacao, int horasValidas) {
+        validacao.definirHorasValidadas(horasValidas);
+        validacao.atividadeRealizada().definirObservacao(gerarObservacao(validacao));
     }
 
-    protected String gerarObservacao(AtividadeRealizada atividade){
-        int horasApresentadas = atividade.horasApresentadas();
-        int horasValidadas = atividade.horasValidadas();
+    protected String gerarObservacao(ValidacaoAtividade validacao) {
+        int horasApresentadas = validacao.atividadeRealizada().horasApresentadas();
+        int horasValidadas = validacao.horasValidadas();
         if (horasValidadas < horasApresentadas){
             return String.format("Horas declaradas (%dh) excedem o limite (%dh); ajustadas para %dh.",
                     horasApresentadas, horasValidadas, horasValidadas);

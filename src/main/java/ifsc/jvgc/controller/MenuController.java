@@ -67,7 +67,7 @@ public class MenuController {
             val.definirParecer(parecer);
             int declaradas = val.atividadeRealizada().horasApresentadas();
             String porAtividade = val.atividadeRealizada().atividade().horasPorAtividade().descricao();
-            int validadas = val.atividadeRealizada().horasValidadas();
+            int validadas = val.horasValidadas();
             String desc = val.atividadeRealizada().atividade().descricao();
             int limite = val.atividadeRealizada().atividade().limiteMaximo();
             String obs = val.atividadeRealizada().observacao();
