@@ -24,10 +24,6 @@ public class AtividadeRealizada {
         return this.atividade;
     }
 
-    public int id(){
-        return this.id;
-    }
-
     public String documento(){
         return this.documento;
     }
