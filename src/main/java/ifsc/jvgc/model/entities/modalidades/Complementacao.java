@@ -5,7 +5,7 @@ import ifsc.jvgc.model.entities.modalidades.factory.AtividadesComplementacaoFact
 
 import java.util.Map;
 
-public class Complementacao extends Modalidade {
+public class Complementacao extends Modalidade implements AtividadesModalidade {
     public Complementacao() {
         super("Complementacao");
     }
@@ -13,5 +13,10 @@ public class Complementacao extends Modalidade {
     @Override
     public Map<Integer, AtividadeComplementar> atividades() {
         return new AtividadesComplementacaoFactory().criar(this);
+    }
+
+    @Override
+    public double proporcaoPermitida() {
+        return 0.2;
     }
 }

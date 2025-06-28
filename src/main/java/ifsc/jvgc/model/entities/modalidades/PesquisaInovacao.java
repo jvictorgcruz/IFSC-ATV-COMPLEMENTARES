@@ -14,4 +14,9 @@ public class PesquisaInovacao extends Modalidade implements AtividadesModalidade
     public Map<Integer, AtividadeComplementar> atividades() {
         return new AtividadesPesquisaInovacaoFactory().criar(this);
     }
+
+    @Override
+    public double proporcaoPermitida() {
+        return 0.4;
+    }
 }

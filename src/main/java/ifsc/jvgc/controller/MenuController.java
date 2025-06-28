@@ -12,8 +12,8 @@ public class MenuController {
 
     private Matricula matricula;
     private final Requerimento requerimento = new Requerimento(matricula, LocalDate.now(), null);
-
     private final List<ValidacaoAtividade> validacoes = new ArrayList<>();
+    private final Map<Modalidade, Integer> horasValidadasPorModalidade = new HashMap<>();
 
     public MenuController(Matricula matricula) {
         this.matricula = matricula;
@@ -36,12 +36,27 @@ public class MenuController {
         AtividadeComplementar atividade = modalidade.atividades().get(idAtividade);
         if (atividade == null) return "Atividade inválida.";
 
-        AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horas, "certificado.pdf");
+        int horasMinimas = matricula.curso().horasMinimasComplementares();
+        int limiteModalidade = (int) (horasMinimas * modalidade.proporcaoPermitida());
+
+        int acumulado = horasValidadasPorModalidade.getOrDefault(modalidade, 0);
+        int restante = limiteModalidade - acumulado;
+
+        if (restante <= 0) {
+            return "Limite de horas para essa modalidade já foi atingido.";
+        }
+
+        int horasAValidar = Math.min(horas, restante);
+
+        AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horasAValidar, "certificado.pdf");
         ProcessoValidacaoAtividade processo = new ProcessoValidacaoPadrao();
+
         ValidacaoAtividade validacao = processo.validar(realizada);
         validacoes.add(validacao);
+        horasValidadasPorModalidade.put(modalidade, acumulado + validacao.horasValidadas());
 
-        return "Atividade validada com sucesso.";
+        return "Atividade validada com " + validacao.horasValidadas() + "h (limite restante da modalidade: "
+                + (limiteModalidade - acumulado - validacao.horasValidadas()) + "h)";
     }
 
     public boolean temValidacoes(){

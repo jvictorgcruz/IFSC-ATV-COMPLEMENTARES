@@ -17,4 +17,6 @@ public abstract class Modalidade implements AtividadesModalidade {
     }
 
     public abstract Map<Integer, AtividadeComplementar> atividades();
+
+    public abstract double proporcaoPermitida();
 }

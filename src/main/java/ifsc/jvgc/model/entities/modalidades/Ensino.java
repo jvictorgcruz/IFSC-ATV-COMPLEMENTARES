@@ -5,11 +5,16 @@ import ifsc.jvgc.model.entities.modalidades.factory.AtividadesEnsinoFactory;
 
 import java.util.Map;
 
-public class Ensino extends Modalidade {
+public class Ensino extends Modalidade implements AtividadesModalidade {
     public Ensino() {super("Ensino");}
 
     @Override
     public Map<Integer, AtividadeComplementar> atividades() {
         return new AtividadesEnsinoFactory().criar(this);
+    }
+
+    @Override
+    public double proporcaoPermitida() {
+        return 0.4;
     }
 }
