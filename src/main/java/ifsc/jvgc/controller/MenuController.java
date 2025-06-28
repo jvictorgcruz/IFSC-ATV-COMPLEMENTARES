@@ -72,9 +72,9 @@ public class MenuController {
         int totalValidadas = 0;
 
         int count = 1;
-        StringBuilder sb = new StringBuilder("\n=== PARECER DE VALIDAÇÃO ===\n");
-        sb.append("Matrícula: ").append(matricula.id()).append("\n");
-        sb.append("Data emissão: ").append(parecer.dataParecer()).append("\n");
+        StringBuilder textoFinalParecer = new StringBuilder("\n=== PARECER DE VALIDAÇÃO ===\n");
+        textoFinalParecer.append("Matrícula: ").append(matricula.id()).append("\n");
+        textoFinalParecer.append("Data emissão: ").append(parecer.dataParecer()).append("\n");
 
         for (ValidacaoAtividade val : validacoes) {
             val.definirParecer(parecer);
@@ -85,22 +85,22 @@ public class MenuController {
             int limite = val.atividadeRealizada().atividade().limiteMaximo();
             String obs = val.atividadeRealizada().observacao();
 
-            sb.append("\nAtividade ").append(count++).append(":\n");
-            sb.append("  Descrição:       ").append(desc).append("\n");
-            sb.append("  Horas declaradas: ").append(declaradas).append("h\n");
-            sb.append("  Horas por atividade: ").append(porAtividade).append("\n");
-            sb.append("  Limite Máximo:    ").append(limite).append("h\n");
-            sb.append("  Horas validadas:  ").append(validadas).append("h\n");
-            sb.append("  Observação:      ").append(obs).append("\n");
+            textoFinalParecer.append("\nAtividade ").append(count++).append(":\n");
+            textoFinalParecer.append("  Descrição:       ").append(desc).append("\n");
+            textoFinalParecer.append("  Horas declaradas: ").append(declaradas).append("h\n");
+            textoFinalParecer.append("  Horas por atividade: ").append(porAtividade).append("\n");
+            textoFinalParecer.append("  Limite Máximo:    ").append(limite).append("h\n");
+            textoFinalParecer.append("  Horas validadas:  ").append(validadas).append("h\n");
+            textoFinalParecer.append("  Observação:      ").append(obs).append("\n");
 
             totalDeclaradas += declaradas;
             totalValidadas += validadas;
         }
 
-        sb.append("\nResumo geral:\n");
-        sb.append("  Total de horas declaradas: ").append(totalDeclaradas).append("h\n");
-        sb.append("  Total de horas validadas:  ").append(totalValidadas).append("h\n");
+        textoFinalParecer.append("\nResumo geral:\n");
+        textoFinalParecer.append("  Total de horas declaradas: ").append(totalDeclaradas).append("h\n");
+        textoFinalParecer.append("  Total de horas validadas:  ").append(totalValidadas).append("h\n");
 
-        return sb.toString();
+        return textoFinalParecer.toString();
     }
 }
