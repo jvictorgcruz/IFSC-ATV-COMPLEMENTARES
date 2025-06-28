@@ -5,15 +5,21 @@ public class AtividadeRealizada {
     private final Requerimento requerimento;
     private final AtividadeComplementar atividade;
     private final int horasApresentadas;
+    private final int horasRestantesModalidade;
     private final String documento;
     private String observacao = "";
 
     public AtividadeRealizada(Requerimento requerimento, AtividadeComplementar atividade,
-                              int horasApresentadas, String documento) {
+                              int horasApresentadas, int horasRestantesModalidade, String documento) {
         this.requerimento = requerimento;
         this.atividade = atividade;
         this.horasApresentadas = horasApresentadas;
+        this.horasRestantesModalidade = horasRestantesModalidade;
         this.documento = documento;
+    }
+
+    public int horasRestantesModalidade() {
+        return horasRestantesModalidade;
     }
 
     public int horasApresentadas(){

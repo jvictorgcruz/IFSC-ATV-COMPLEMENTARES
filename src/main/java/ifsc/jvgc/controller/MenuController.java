@@ -42,13 +42,7 @@ public class MenuController {
         int acumulado = horasValidadasPorModalidade.getOrDefault(modalidade, 0);
         int restante = limiteModalidade - acumulado;
 
-        if (restante <= 0) {
-            return "Limite de horas para essa modalidade já foi atingido.";
-        }
-
-        int horasAValidar = Math.min(horas, restante);
-
-        AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horasAValidar, "certificado.pdf");
+        AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horas, restante, "certificado.pdf");
         ProcessoValidacaoAtividade processo = new ProcessoValidacaoPadrao();
 
         ValidacaoAtividade validacao = processo.validar(realizada);
@@ -79,6 +73,7 @@ public class MenuController {
         for (ValidacaoAtividade val : validacoes) {
             val.definirParecer(parecer);
             int declaradas = val.atividadeRealizada().horasApresentadas();
+            int restantes = val.atividadeRealizada().horasRestantesModalidade();
             String porAtividade = val.atividadeRealizada().atividade().horasPorAtividade().descricao();
             int validadas = val.horasValidadas();
             String desc = val.atividadeRealizada().atividade().descricao();
@@ -88,6 +83,7 @@ public class MenuController {
             textoFinalParecer.append("\nAtividade ").append(count++).append(":\n");
             textoFinalParecer.append("  Descrição:       ").append(desc).append("\n");
             textoFinalParecer.append("  Horas declaradas: ").append(declaradas).append("h\n");
+            textoFinalParecer.append("  Horas restantes da modalidade: ").append(restantes).append("h\n");
             textoFinalParecer.append("  Horas por atividade: ").append(porAtividade).append("\n");
             textoFinalParecer.append("  Limite Máximo:    ").append(limite).append("h\n");
             textoFinalParecer.append("  Horas validadas:  ").append(validadas).append("h\n");
