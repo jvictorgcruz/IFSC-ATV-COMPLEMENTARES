@@ -23,13 +23,14 @@ public class MenuInterativo {
     public static void exibirMenu() {
         while (true) {
             System.out.println("\n--- MENU DE MODALIDADES ---");
-            controller.getModalidades().forEach((k, v) -> System.out.printf("%d - %s\n", k, v.nome()));
+            controller.getModalidades()
+                    .forEach(m -> System.out.printf("%d - %s\n", m.getId(), m.getNome()));
             System.out.println("0 - Finalizar e gerar parecer");
 
             int escolha = lerOpcao();
             if (escolha == 0) break;
 
-            Modalidade modalidade = controller.getModalidade(escolha);
+            Modalidade modalidade = controller.getModalidadeById(escolha);
             if (modalidade == null) {
                 System.out.println("Modalidade inválida.");
                 continue;

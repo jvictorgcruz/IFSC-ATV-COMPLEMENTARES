@@ -2,6 +2,7 @@ package ifsc.jvgc.controller;
 
 import ifsc.jvgc.model.entities.*;
 import ifsc.jvgc.model.entities.modalidades.*;
+import ifsc.jvgc.model.enums.ModalidadeTipo;
 import ifsc.jvgc.model.template.*;
 
 import java.time.LocalDate;
@@ -13,21 +14,17 @@ public class MenuController {
     private final Requerimento requerimento = new Requerimento(matricula, LocalDate.now(), null);
 
     private final List<ValidacaoAtividade> validacoes = new ArrayList<>();
-    private final Map<Integer, Modalidade> modalidades = new LinkedHashMap<>();
 
     public MenuController(Matricula matricula) {
-        modalidades.put(1, new Ensino());
-        modalidades.put(2, new PesquisaInovacao());
-        modalidades.put(3, new Extensao());
-        modalidades.put(4, new Complementacao());
     }
 
-    public Map<Integer, Modalidade> getModalidades() {
-        return modalidades;
+    public List<ModalidadeTipo> getModalidades() {
+        return Arrays.asList(ModalidadeTipo.values());
     }
 
-    public Modalidade getModalidade(int id) {
-        return modalidades.get(id);
+    public Modalidade getModalidadeById(int id) {
+        ModalidadeTipo tipo = ModalidadeTipo.fromId(id);
+        return tipo != null ? tipo.getModalidade() : null;
     }
 
     public Map<Integer, AtividadeComplementar> getAtividades(Modalidade modalidade) {
