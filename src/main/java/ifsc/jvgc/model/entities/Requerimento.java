@@ -7,13 +7,13 @@ import java.time.LocalDate;
 
 public class Requerimento {
     private int id;
-    private final Aluno aluno;
+    private final Matricula matricula;
     private final LocalDate dataRequerimento;
     private LocalDate dataValidacao;
     private EstadoRequerimento estado;
 
-    public Requerimento(Aluno aluno, LocalDate dataRequerimento, LocalDate dataValidacao) {
-        this.aluno = aluno;
+    public Requerimento(Matricula matricula, LocalDate dataRequerimento, LocalDate dataValidacao) {
+        this.matricula = matricula;
         this.dataRequerimento = dataRequerimento;
         this.dataValidacao = dataValidacao;
         this.estado = new EmAberto();

@@ -9,13 +9,13 @@ import java.util.*;
 
 public class MenuController {
 
-    private final Aluno aluno = new Aluno(146846, "Ana");
-    private final Requerimento requerimento = new Requerimento(aluno, LocalDate.now(), null);
-    private final List<ValidacaoAtividade> validacoes = new ArrayList<>();
+    private Matricula matricula;
+    private final Requerimento requerimento = new Requerimento(matricula, LocalDate.now(), null);
 
+    private final List<ValidacaoAtividade> validacoes = new ArrayList<>();
     private final Map<Integer, Modalidade> modalidades = new LinkedHashMap<>();
 
-    public MenuController() {
+    public MenuController(Matricula matricula) {
         modalidades.put(1, new Ensino());
         modalidades.put(2, new PesquisaInovacao());
         modalidades.put(3, new Extensao());
@@ -60,7 +60,7 @@ public class MenuController {
 
         int count = 1;
         StringBuilder sb = new StringBuilder("\n=== PARECER DE VALIDAÇÃO ===\n");
-        sb.append("Matrícula: ").append(aluno.matricula()).append("\n");
+        sb.append("Matrícula: ").append(matricula.id()).append("\n");
         sb.append("Data emissão: ").append(parecer.dataParecer()).append("\n");
 
         for (ValidacaoAtividade val : validacoes) {

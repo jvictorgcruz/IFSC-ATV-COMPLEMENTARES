@@ -1,7 +1,10 @@
 package ifsc.jvgc.view;
 
 import ifsc.jvgc.controller.MenuController;
+import ifsc.jvgc.model.entities.Aluno;
 import ifsc.jvgc.model.entities.AtividadeComplementar;
+import ifsc.jvgc.model.entities.Curso;
+import ifsc.jvgc.model.entities.Matricula;
 import ifsc.jvgc.model.entities.modalidades.Modalidade;
 
 import java.util.Map;
@@ -10,7 +13,12 @@ import java.util.Scanner;
 public class MenuInterativo {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final MenuController controller = new MenuController();
+    private static final Matricula matricula = new Matricula(
+            146846,
+            new Curso("Analise e desenvolvimento de sistemas", 100),
+            new Aluno("Ana")
+    );
+    private static final MenuController controller = new MenuController(matricula);
 
     public static void exibirMenu() {
         while (true) {
