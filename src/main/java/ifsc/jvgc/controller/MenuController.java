@@ -16,6 +16,7 @@ public class MenuController {
     private final List<ValidacaoAtividade> validacoes = new ArrayList<>();
 
     public MenuController(Matricula matricula) {
+        this.matricula = matricula;
     }
 
     public List<ModalidadeTipo> getModalidades() {
