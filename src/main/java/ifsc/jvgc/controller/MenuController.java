@@ -14,6 +14,7 @@ public class MenuController {
     private final Requerimento requerimento;
     private final List<ValidacaoAtividade> validacoes = new ArrayList<>();
     private final Map<Modalidade, Integer> horasValidadasPorModalidade = new HashMap<>();
+    private final Map<AtividadeComplementar, Integer> horasValidadasPorAtividade = new HashMap<>();
 
     public MenuController(Matricula matricula) {
         this.matricula = matricula;
@@ -40,18 +41,29 @@ public class MenuController {
         int horasMinimas = matricula.curso().horasMinimasComplementares();
         int limiteModalidade = (int) (horasMinimas * modalidade.proporcaoPermitida());
 
-        int acumulado = horasValidadasPorModalidade.getOrDefault(modalidade, 0);
-        int restante = limiteModalidade - acumulado;
+        int acumuladoModalidade = horasValidadasPorModalidade.getOrDefault(modalidade, 0);
+        int restanteModalidade = limiteModalidade - acumuladoModalidade;
 
-        AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horas, restante, "certificado.pdf");
+        int acumuladoAtividade = horasValidadasPorAtividade.getOrDefault(atividade, 0);
+        int restanteAtividade = atividade.limiteMaximo() - acumuladoAtividade;
+
+        int horasPermitidas = Math.min(horas, Math.min(restanteModalidade, restanteAtividade));
+        AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horas,
+                restanteModalidade, restanteAtividade, "certificado.pdf");
         ProcessoValidacaoAtividade processo = new ProcessoValidacaoPadrao();
 
         ValidacaoAtividade validacao = processo.validar(realizada);
         validacoes.add(validacao);
-        horasValidadasPorModalidade.put(modalidade, acumulado + validacao.horasValidadas());
+        horasValidadasPorModalidade.put(modalidade, acumuladoModalidade + horasPermitidas);
+        horasValidadasPorAtividade.put(atividade, acumuladoAtividade + horasPermitidas);
 
-        return "Atividade validada com " + validacao.horasValidadas() + "h (limite restante da modalidade: "
-                + (limiteModalidade - acumulado - validacao.horasValidadas()) + "h)";
+
+        // Se a regra permitir registro de atividade mesmo sem restante para o tipo de modalidade/atividade
+        if (validacao.horasValidadas() == 0) {
+            return "Atividade não possui limite restante (validada com 0h)";
+        }
+
+        return "Atividade validada com " + validacao.horasValidadas() + "h";
     }
 
     public boolean temValidacoes(){
@@ -74,19 +86,20 @@ public class MenuController {
         for (ValidacaoAtividade val : validacoes) {
             val.definirParecer(parecer);
             int declaradas = val.atividadeRealizada().horasApresentadas();
-            int restantes = val.atividadeRealizada().horasRestantesModalidade();
+            int restantesModalidade = val.atividadeRealizada().horasRestantesModalidade();
+            int restantesAtividade = val.atividadeRealizada().horasRestantesAtividade();
             String porAtividade = val.atividadeRealizada().atividade().horasPorAtividade().descricao();
             int validadas = val.horasValidadas();
             String desc = val.atividadeRealizada().atividade().descricao();
-            int limite = val.atividadeRealizada().atividade().limiteMaximo();
             String obs = val.atividadeRealizada().observacao();
 
             textoFinalParecer.append("\nAtividade ").append(count++).append(":\n");
             textoFinalParecer.append("  Descrição:       ").append(desc).append("\n");
             textoFinalParecer.append("  Horas declaradas: ").append(declaradas).append("h\n");
-            textoFinalParecer.append("  Horas restantes da modalidade: ").append(restantes).append("h\n");
+            textoFinalParecer.append("  Horas restantes da modalidade: ").append(restantesModalidade).append("h\n");
+            textoFinalParecer.append("  Horas restantes da atividade complementar: ").append(restantesAtividade)
+                    .append("h\n");
             textoFinalParecer.append("  Horas por atividade: ").append(porAtividade).append("\n");
-            textoFinalParecer.append("  Limite Máximo:    ").append(limite).append("h\n");
             textoFinalParecer.append("  Horas validadas:  ").append(validadas).append("h\n");
             textoFinalParecer.append("  Observação:      ").append(obs).append("\n");
 

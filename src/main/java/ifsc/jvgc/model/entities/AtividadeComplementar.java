@@ -3,6 +3,8 @@ package ifsc.jvgc.model.entities;
 import ifsc.jvgc.model.entities.modalidades.Modalidade;
 import ifsc.jvgc.model.strategy.EstrategiaValidacao;
 
+import java.util.Objects;
+
 public class AtividadeComplementar {
     private int id;
     private final String descricao;
@@ -20,6 +22,22 @@ public class AtividadeComplementar {
         this.limiteMaximo = limiteMaximo;
         this.modalidade = modalidade;
         this.estrategia = estrategia;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AtividadeComplementar that = (AtividadeComplementar) o;
+
+        return descricao.equals(that.descricao) &&
+                modalidade.getClass().equals(that.modalidade.getClass());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(descricao, modalidade.getClass());
     }
 
     public int limiteMaximo() {
