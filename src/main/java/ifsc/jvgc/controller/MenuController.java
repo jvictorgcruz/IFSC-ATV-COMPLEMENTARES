@@ -10,13 +10,14 @@ import java.util.*;
 
 public class MenuController {
 
-    private Matricula matricula;
-    private final Requerimento requerimento = new Requerimento(matricula, LocalDate.now(), null);
+    private final Matricula matricula;
+    private final Requerimento requerimento;
     private final List<ValidacaoAtividade> validacoes = new ArrayList<>();
     private final Map<Modalidade, Integer> horasValidadasPorModalidade = new HashMap<>();
 
     public MenuController(Matricula matricula) {
         this.matricula = matricula;
+        this.requerimento = new Requerimento(matricula, LocalDate.now(), null);
     }
 
     public List<ModalidadeTipo> getModalidades() {
