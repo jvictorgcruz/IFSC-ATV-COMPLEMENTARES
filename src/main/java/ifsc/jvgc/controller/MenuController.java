@@ -124,6 +124,16 @@ public class MenuController {
         textoFinalParecer.append("  Total de horas declaradas: ").append(totalDeclaradas).append("h\n");
         textoFinalParecer.append("  Total de horas validadas:  ").append(totalValidadas).append("h\n");
 
+        int horasMinimas = matricula.curso().horasMinimasComplementares();
+
+        if (totalValidadas >= horasMinimas) {
+            textoFinalParecer.append("Aluno atingiu as horas mínimas exigidas pelo curso (")
+                    .append(horasMinimas).append("h).\n");
+        } else {
+            textoFinalParecer.append("Aluno NÃO atingiu as horas mínimas exigidas pelo curso (")
+                    .append(horasMinimas).append("h).\n");
+        }
+
         return textoFinalParecer.toString();
     }
 }
