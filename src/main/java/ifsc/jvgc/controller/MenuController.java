@@ -122,7 +122,7 @@ public class MenuController {
 
         textoFinalParecer.append("\nResumo geral:\n");
         textoFinalParecer.append("  Total de horas declaradas: ").append(totalDeclaradas).append("h\n");
-        textoFinalParecer.append("  Total de horas validadas:  ").append(totalValidadas).append("h\n");
+        textoFinalParecer.append("  Total de horas validadas:  ").append(totalValidadas).append("h\n\n");
 
         int horasMinimas = matricula.curso().horasMinimasComplementares();
 

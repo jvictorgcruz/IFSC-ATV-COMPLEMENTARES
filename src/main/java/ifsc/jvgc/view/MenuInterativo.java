@@ -84,7 +84,7 @@ public class MenuInterativo {
                 deferido = deferidoTexto.equalsIgnoreCase("s");
                 break;
             };
-            System.out.println("A resposta deve ser s/N");
+            System.out.println("A resposta deve ser s/N\n");
         }
 
         String relatorioParecer = controller.gerarParecer(textoParecer, deferido);
