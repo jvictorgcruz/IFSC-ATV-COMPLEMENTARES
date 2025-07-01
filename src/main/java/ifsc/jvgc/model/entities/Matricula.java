@@ -6,6 +6,7 @@ public class Matricula {
     private Aluno aluno;
 
     public Matricula(int id, Curso curso, Aluno aluno) {
+        this.id = id;
         this.curso = curso;
         this.aluno = aluno;
     }
