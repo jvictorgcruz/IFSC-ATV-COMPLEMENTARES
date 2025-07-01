@@ -48,6 +48,12 @@ public class MenuController {
         int restanteAtividade = atividade.limiteMaximo() - acumuladoAtividade;
 
         int horasPermitidas = Math.min(horas, Math.min(restanteModalidade, restanteAtividade));
+
+        // Se a regra não permitir registro de atividade sem restante para o tipo de modalidade/atividade
+        // if (horasPermitidas == 0){
+        //    return "Não há limite restante para essa atividade";
+        //}
+
         AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horas,
                 restanteModalidade, restanteAtividade, "certificado.pdf");
         ProcessoValidacaoAtividade processo = new ProcessoValidacaoPadrao();
