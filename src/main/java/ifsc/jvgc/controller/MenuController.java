@@ -3,7 +3,6 @@ package ifsc.jvgc.controller;
 import ifsc.jvgc.model.entities.*;
 import ifsc.jvgc.model.entities.modalidades.*;
 import ifsc.jvgc.model.enums.ModalidadeTipo;
-import ifsc.jvgc.model.template.*;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -56,7 +55,7 @@ public class MenuController {
 
         AtividadeRealizada realizada = new AtividadeRealizada(requerimento, atividade, horas,
                 restanteModalidade, restanteAtividade, "certificado.pdf");
-        ProcessoValidacaoAtividade processo = new ProcessoValidacaoPadrao();
+        ProcessoValidacaoAtividade processo = new ProcessoValidacaoAtividade();
 
         ValidacaoAtividade validacao = processo.validar(realizada);
         validacoes.add(validacao);

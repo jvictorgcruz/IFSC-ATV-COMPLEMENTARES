@@ -1,9 +1,6 @@
-package ifsc.jvgc.model.template;
+package ifsc.jvgc.model.entities;
 
-import ifsc.jvgc.model.entities.AtividadeRealizada;
-import ifsc.jvgc.model.entities.ValidacaoAtividade;
-
-public abstract class ProcessoValidacaoAtividade {
+public class ProcessoValidacaoAtividade {
     public final ValidacaoAtividade validar(AtividadeRealizada realizada) {
         verificarDocumento(realizada);
         int horasValidas = realizada.atividade().estrategia().calcularHorasValidas(realizada);
@@ -12,7 +9,9 @@ public abstract class ProcessoValidacaoAtividade {
         return validacao;
     }
 
-    protected abstract void verificarDocumento(AtividadeRealizada atividade);
+    protected void verificarDocumento(AtividadeRealizada atividade){
+        System.out.println("Verificando documento: " + atividade.documento());
+    };
 
     protected void registrarValidacao(ValidacaoAtividade validacao, int horasValidas) {
         validacao.definirHorasValidadas(horasValidas);
