@@ -70,10 +70,10 @@ public class MenuController {
         return !validacoes.isEmpty();
     }
 
-    public String gerarParecer(String textoParecer) {
-        requerimento.avaliar();
+    public String gerarParecer(String textoParecer, boolean deferido) {
+        requerimento.avaliar(deferido);
         Parecer parecer = new Parecer(requerimento, textoParecer, LocalDate.now());
-        requerimento.avaliar();
+        requerimento.avaliar(deferido);
 
         int totalDeclaradas = 0;
         int totalValidadas = 0;
@@ -81,6 +81,8 @@ public class MenuController {
         int count = 1;
         StringBuilder textoFinalParecer = new StringBuilder("\n=== PARECER DE VALIDAÇÃO ===\n");
         textoFinalParecer.append("Matrícula: ").append(matricula.id()).append("\n");
+        textoFinalParecer.append("Status do requerimento: ").append(requerimento.estado().nome()).append("\n");
+        textoFinalParecer.append("Parecer: ").append(parecer.texto()).append("\n");
         textoFinalParecer.append("Data emissão: ").append(parecer.dataParecer()).append("\n");
 
         for (ValidacaoAtividade val : validacoes) {

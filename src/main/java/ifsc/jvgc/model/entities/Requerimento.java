@@ -19,8 +19,12 @@ public class Requerimento {
         this.estado = new EmAberto();
     }
 
-    public void avaliar() {
-        estado.avaliar(this);
+    public void avaliar(boolean deferido) {
+        estado.avaliar(this, deferido);
+    }
+
+    public EstadoRequerimento estado() {
+        return estado;
     }
 
     public void setEstado(EstadoRequerimento estado) {

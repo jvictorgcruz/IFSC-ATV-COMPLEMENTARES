@@ -76,7 +76,18 @@ public class MenuInterativo {
             System.out.println("O texto do parecer não pode estar vazio. Tente novamente.");
         }
 
-        String relatorioParecer = controller.gerarParecer(textoParecer);
+        boolean deferido;
+        while (true) {
+            System.out.print("O requerimento será DEFERIDO? (s/n): ");
+            String deferidoTexto = scanner.nextLine().trim();
+            if (deferidoTexto.equalsIgnoreCase("s") || deferidoTexto.equalsIgnoreCase("n")) {
+                deferido = deferidoTexto.equalsIgnoreCase("s");
+                break;
+            };
+            System.out.println("A resposta deve ser s/N");
+        }
+
+        String relatorioParecer = controller.gerarParecer(textoParecer, deferido);
         System.out.println(relatorioParecer);
     }
 

@@ -18,4 +18,8 @@ public class Parecer {
         return dataParecer;
     }
 
+    public String texto(){
+        return texto;
+    }
+
 }
