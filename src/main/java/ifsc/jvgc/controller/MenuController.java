@@ -86,8 +86,13 @@ public class MenuController {
 
         int count = 1;
         StringBuilder textoFinalParecer = new StringBuilder("\n=== PARECER DE VALIDAÇÃO ===\n");
-        textoFinalParecer.append("Matrícula: ").append(matricula.id()).append("\n");
         textoFinalParecer.append("Status do requerimento: ").append(requerimento.estado().nome()).append("\n");
+
+        if (!deferido) {
+            return textoFinalParecer.toString();
+        }
+
+        textoFinalParecer.append("Matrícula: ").append(matricula.id()).append("\n");
         textoFinalParecer.append("Parecer: ").append(parecer.texto()).append("\n");
         textoFinalParecer.append("Data emissão: ").append(parecer.dataParecer()).append("\n");
 
