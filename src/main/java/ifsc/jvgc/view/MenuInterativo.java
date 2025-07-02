@@ -24,7 +24,7 @@ public class MenuInterativo {
         while (true) {
             System.out.println("\n--- MENU DE MODALIDADES ---");
             controller.getModalidades()
-                    .forEach(m -> System.out.printf("%d - %s\n", m.getId(), m.getNome()));
+                    .forEach(m -> System.out.printf("%d - %s\n", m.id(), m.nome()));
             System.out.println("0 - Finalizar e gerar parecer");
 
             int escolha = lerOpcao();

@@ -14,10 +14,6 @@ public class ValidacaoAtividade {
         this.parecer = parecer;
     }
 
-    public AtividadeRealizada atividadeRealizada() {
-        return atividadeRealizada;
-    }
-
     public void definirHorasValidadas(int horasValidas) {
         this.horasValidadas = horasValidas;
     }
@@ -26,4 +22,31 @@ public class ValidacaoAtividade {
         return horasValidadas;
     }
 
+    public int horasApresentadasAtividade(){
+        return atividadeRealizada.horasApresentadas();
+    }
+
+    public int horasRestantesAtividade(){
+        return atividadeRealizada.horasRestantesAtividade();
+    }
+
+    public int horasRestantesModalidade(){
+        return atividadeRealizada.horasRestantesModalidade();
+    }
+
+    public String descricaoAtividade(){
+        return this.atividadeRealizada.descricaoAtividade();
+    }
+
+    public String observacaoAtividade(){
+        return this.atividadeRealizada.observacao();
+    }
+
+    public String descricaoHorasPorAtividade() {
+        return this.atividadeRealizada.descricaoHorasPorAtividade();
+    }
+
+    public void definirObservacaoAtividade(String observacao) {
+        this.atividadeRealizada.definirObservacao(observacao);
+    }
 }

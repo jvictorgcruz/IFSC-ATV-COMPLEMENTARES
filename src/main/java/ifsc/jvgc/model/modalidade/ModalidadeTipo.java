@@ -18,15 +18,15 @@ public enum ModalidadeTipo {
         this.modalidade = modalidade;
     }
 
-    public int getId() {
+    public int id() {
         return id;
     }
 
-    public String getNome() {
+    public String nome() {
         return nome;
     }
 
-    public Modalidade getModalidade() {
+    public Modalidade modalidade() {
         return modalidade;
     }
 

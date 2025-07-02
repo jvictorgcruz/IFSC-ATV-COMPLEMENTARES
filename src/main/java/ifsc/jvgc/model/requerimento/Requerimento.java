@@ -24,15 +24,15 @@ public class Requerimento {
         estado.avaliar(this, deferido);
     }
 
-    public EstadoRequerimento estado() {
-        return estado;
-    }
-
     public void setEstado(EstadoRequerimento estado) {
         this.estado = estado;
     }
 
     public void validar() {
         this.dataValidacao = LocalDate.now();
+    }
+
+    public String nomeDoEstado(){
+        return this.estado.nome();
     }
 }

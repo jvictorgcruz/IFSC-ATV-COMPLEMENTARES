@@ -44,10 +44,6 @@ public class AtividadeComplementar {
         return this.limiteMaximo;
     }
 
-    public HorasPorAtividade horasPorAtividade() {
-        return this.horasPorAtividade;
-    }
-
     public String descricao() {
         return this.descricao;
     }
@@ -56,7 +52,11 @@ public class AtividadeComplementar {
         return this.modalidade;
     }
 
-    public EstrategiaValidacao estrategia() {
-        return this.estrategia;
+    public String descricaoHorasPorAtividade() {
+        return this.horasPorAtividade.descricao();
+    }
+
+    public int calcularHorasValidas(AtividadeRealizada atividadeRealizada) {
+        return estrategia.calcularHorasValidas(atividadeRealizada);
     }
 }

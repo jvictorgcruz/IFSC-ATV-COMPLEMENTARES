@@ -3,7 +3,7 @@ package ifsc.jvgc.model;
 public class ProcessoValidacaoAtividade {
     public final ValidacaoAtividade validar(AtividadeRealizada realizada) {
         verificarDocumento(realizada);
-        int horasValidas = realizada.atividade().estrategia().calcularHorasValidas(realizada);
+        int horasValidas = realizada.calcularHorasValidas();
         ValidacaoAtividade validacao = new ValidacaoAtividade(realizada);
         registrarValidacao(validacao, horasValidas);
         return validacao;
@@ -15,11 +15,12 @@ public class ProcessoValidacaoAtividade {
 
     protected void registrarValidacao(ValidacaoAtividade validacao, int horasValidas) {
         validacao.definirHorasValidadas(horasValidas);
-        validacao.atividadeRealizada().definirObservacao(gerarObservacao(validacao));
+        String observacao = gerarObservacao(validacao);
+        validacao.definirObservacaoAtividade(observacao);
     }
 
     protected String gerarObservacao(ValidacaoAtividade validacao) {
-        int horasApresentadas = validacao.atividadeRealizada().horasApresentadas();
+        int horasApresentadas = validacao.horasApresentadasAtividade();
         int horasValidadas = validacao.horasValidadas();
         if (horasValidadas < horasApresentadas){
             return String.format("Horas declaradas (%dh) excedem o limite (%dh); ajustadas para %dh.",

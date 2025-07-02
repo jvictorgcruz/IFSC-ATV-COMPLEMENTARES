@@ -15,11 +15,7 @@ public class Matricula {
         return id;
     }
 
-    public Curso curso() {
-        return curso;
-    }
-
-    public Aluno aluno() {
-        return aluno;
+    public int horasMinimasComplementaresCurso(){
+        return this.curso.horasMinimasComplementares();
     }
 }

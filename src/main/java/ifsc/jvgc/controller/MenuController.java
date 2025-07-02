@@ -27,7 +27,7 @@ public class MenuController {
 
     public Modalidade getModalidadeById(int id) {
         ModalidadeTipo tipo = ModalidadeTipo.fromId(id);
-        return tipo != null ? tipo.getModalidade() : null;
+        return tipo != null ? tipo.modalidade() : null;
     }
 
     public Map<Integer, AtividadeComplementar> getAtividades(Modalidade modalidade) {
@@ -38,7 +38,7 @@ public class MenuController {
         AtividadeComplementar atividade = modalidade.atividades().get(idAtividade);
         if (atividade == null) return "Atividade inválida.";
 
-        int horasMinimas = matricula.curso().horasMinimasComplementares();
+        int horasMinimas = matricula.horasMinimasComplementaresCurso();
         int limiteModalidade = (int) (horasMinimas * modalidade.proporcaoPermitida());
 
         int acumuladoModalidade = horasValidadasPorModalidade.getOrDefault(modalidade, 0);
@@ -85,7 +85,7 @@ public class MenuController {
 
         int count = 1;
         StringBuilder textoFinalParecer = new StringBuilder("\n=== PARECER DE VALIDAÇÃO ===\n");
-        textoFinalParecer.append("Status do requerimento: ").append(requerimento.estado().nome()).append("\n");
+        textoFinalParecer.append("Status do requerimento: ").append(requerimento.nomeDoEstado()).append("\n");
 
         if (!deferido) {
             return textoFinalParecer.toString();
@@ -97,13 +97,13 @@ public class MenuController {
 
         for (ValidacaoAtividade val : validacoes) {
             val.definirParecer(parecer);
-            int declaradas = val.atividadeRealizada().horasApresentadas();
-            int restantesModalidade = val.atividadeRealizada().horasRestantesModalidade();
-            int restantesAtividade = val.atividadeRealizada().horasRestantesAtividade();
-            String porAtividade = val.atividadeRealizada().atividade().horasPorAtividade().descricao();
+            int declaradas = val.horasApresentadasAtividade();
+            int restantesModalidade = val.horasRestantesModalidade();
+            int restantesAtividade = val.horasRestantesAtividade();
+            String porAtividade = val.descricaoHorasPorAtividade();
             int validadas = val.horasValidadas();
-            String desc = val.atividadeRealizada().atividade().descricao();
-            String obs = val.atividadeRealizada().observacao();
+            String desc = val.descricaoAtividade();
+            String obs = val.observacaoAtividade();
 
             textoFinalParecer.append("\nAtividade ").append(count++).append(":\n");
             textoFinalParecer.append("  Descrição:       ").append(desc).append("\n");
@@ -123,7 +123,7 @@ public class MenuController {
         textoFinalParecer.append("  Total de horas declaradas: ").append(totalDeclaradas).append("h\n");
         textoFinalParecer.append("  Total de horas validadas:  ").append(totalValidadas).append("h\n\n");
 
-        int horasMinimas = matricula.curso().horasMinimasComplementares();
+        int horasMinimas = matricula.horasMinimasComplementaresCurso();
 
         if (totalValidadas >= horasMinimas) {
             textoFinalParecer.append("Aluno atingiu as horas mínimas exigidas pelo curso (")

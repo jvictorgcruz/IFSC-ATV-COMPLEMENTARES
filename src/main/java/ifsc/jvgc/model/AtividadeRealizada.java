@@ -49,4 +49,16 @@ public class AtividadeRealizada {
     public String observacao(){
         return this.observacao;
     }
+
+    public String descricaoAtividade(){
+        return this.atividade.descricao();
+    }
+
+    public String descricaoHorasPorAtividade() {
+        return this.atividade.descricaoHorasPorAtividade();
+    }
+
+    public int calcularHorasValidas() {
+        return atividade().calcularHorasValidas(this);
+    }
 }
