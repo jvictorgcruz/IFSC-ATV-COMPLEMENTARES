@@ -11,7 +11,7 @@ public class ProcessoValidacaoAtividade {
 
     protected void verificarDocumento(AtividadeRealizada atividade){
         System.out.println("Verificando documento: " + atividade.documento());
-    };
+    }
 
     protected void registrarValidacao(ValidacaoAtividade validacao, int horasValidas) {
         validacao.definirHorasValidadas(horasValidas);

@@ -6,5 +6,5 @@ import java.util.Map;
 
 public interface AtividadesModalidade {
     Map<Integer, AtividadeComplementar> atividades();
-    double proporcaoPermitida();;
+    double proporcaoPermitida();
 }

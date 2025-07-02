@@ -83,7 +83,7 @@ public class MenuInterativo {
             if (deferidoTexto.equalsIgnoreCase("s") || deferidoTexto.equalsIgnoreCase("n")) {
                 deferido = deferidoTexto.equalsIgnoreCase("s");
                 break;
-            };
+            }
             System.out.println("A resposta deve ser s/N\n");
         }
 
