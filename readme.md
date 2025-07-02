@@ -15,6 +15,13 @@ O sistema gerencia a validação de atividades complementares realizadas por alu
 
 ---
 
+### Grupo
+- João Victor Garcia
+- Gabriel Gomes
+- Caua Gonzaga
+
+---
+
 ## 📁 Estrutura do Projeto
 
 ```
