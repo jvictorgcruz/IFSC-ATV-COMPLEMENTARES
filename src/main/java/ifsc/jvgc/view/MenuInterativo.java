@@ -1,11 +1,11 @@
 package ifsc.jvgc.view;
 
 import ifsc.jvgc.controller.MenuController;
-import ifsc.jvgc.model.entities.Aluno;
-import ifsc.jvgc.model.entities.AtividadeComplementar;
-import ifsc.jvgc.model.entities.Curso;
-import ifsc.jvgc.model.entities.Matricula;
-import ifsc.jvgc.model.entities.modalidades.Modalidade;
+import ifsc.jvgc.model.Aluno;
+import ifsc.jvgc.model.AtividadeComplementar;
+import ifsc.jvgc.model.Curso;
+import ifsc.jvgc.model.Matricula;
+import ifsc.jvgc.model.modalidade.tipos.Modalidade;
 
 import java.util.Map;
 import java.util.Scanner;

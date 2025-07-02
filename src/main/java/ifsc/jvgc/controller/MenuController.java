@@ -1,8 +1,9 @@
 package ifsc.jvgc.controller;
 
-import ifsc.jvgc.model.entities.*;
-import ifsc.jvgc.model.entities.modalidades.*;
-import ifsc.jvgc.model.enums.ModalidadeTipo;
+import ifsc.jvgc.model.*;
+import ifsc.jvgc.model.modalidade.tipos.Modalidade;
+import ifsc.jvgc.model.requerimento.Requerimento;
+import ifsc.jvgc.model.modalidade.ModalidadeTipo;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -61,7 +62,6 @@ public class MenuController {
         validacoes.add(validacao);
         horasValidadasPorModalidade.put(modalidade, acumuladoModalidade + horasPermitidas);
         horasValidadasPorAtividade.put(atividade, acumuladoAtividade + horasPermitidas);
-
 
         // Se a regra permitir registro de atividade mesmo sem restante para o tipo de modalidade/atividade
         if (validacao.horasValidadas() == 0) {
